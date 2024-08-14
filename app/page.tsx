@@ -27,10 +27,16 @@ export default function App() {
 
     function SignOut () {
       try {
+        caches.keys().then((names) => {
+          names.forEach((name) => {
+              caches.delete(name);
+          });
+        })
        localStorage.clear();
        fetchAuthSession({ forceRefresh: true });
        signOut({ global: true });
-      } catch (error) {
+      }
+      catch (error) {
         console.error('Error signing out:', error);
       }
     };
