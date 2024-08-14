@@ -27,14 +27,14 @@ export default function App() {
 
     function SignOut () {
       try {
-        caches.keys().then((names) => {
-          names.forEach((name) => {
-              caches.delete(name);
-          });
-        })
-       location.reload();
-       localStorage.clear();
-       fetchAuthSession({ forceRefresh: true });
+        // caches.keys().then((names) => {
+        //   names.forEach((name) => {
+        //       caches.delete(name);
+        //   });
+        // })
+       //location.reload();
+       //localStorage.clear();
+       //fetchAuthSession({ forceRefresh: true });
        signOut({ global: true });
       }
       catch (error) {
