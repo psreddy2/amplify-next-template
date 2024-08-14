@@ -5,6 +5,8 @@ import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
 import "./../app/app.css";
 import { Amplify } from "aws-amplify";
+import { signOut } from 'aws-amplify/auth';
+import { fetchAuthSession } from 'aws-amplify/auth';
 import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
 
@@ -21,6 +23,14 @@ export default function App() {
     function deleteTodo(id: string) {
         client.models.Todo.delete({ id })
     }
+
+    function SignOut () {
+      try {
+       fetchAuthSession({ forceRefresh: true });
+      } catch (error) {
+        console.error('Error signing out:', error);
+      }
+    };
 
   function listTodos() {
     client.models.Todo.observeQuery().subscribe({
@@ -58,7 +68,7 @@ export default function App() {
                    Review next steps of this tutorial.
                </a>
            </div>
-           <button onClick={signOut}>Sign out</button>
+           <button onClick={SignOut}>Sign out</button>
        </main>
            )
            }
