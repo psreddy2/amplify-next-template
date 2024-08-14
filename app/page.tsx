@@ -28,6 +28,7 @@ export default function App() {
     function SignOut () {
       try {
        signOut({ global: true });
+       localStorage.clear();
        fetchAuthSession({ forceRefresh: true });
       } catch (error) {
         console.error('Error signing out:', error);
