@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { generateClient } from "aws-amplify/data";
+
 import type { Schema } from "@/amplify/data/resource";
 import "./../app/app.css";
 import { Amplify } from "aws-amplify";
@@ -26,6 +27,7 @@ export default function App() {
 
     function SignOut () {
       try {
+       signOut({ global: true });
        fetchAuthSession({ forceRefresh: true });
       } catch (error) {
         console.error('Error signing out:', error);
