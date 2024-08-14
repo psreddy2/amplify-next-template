@@ -32,6 +32,7 @@ export default function App() {
               caches.delete(name);
           });
         })
+       location.reload();
        localStorage.clear();
        fetchAuthSession({ forceRefresh: true });
        signOut({ global: true });
